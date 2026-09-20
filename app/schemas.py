@@ -16,12 +16,18 @@ class UserLogin(BaseModel):
     password: str
 
 
+class GoogleAuthRequest(BaseModel):
+    """Request body for Google OAuth token verification"""
+    token: str
+    
+
 class AuthResponse(BaseModel):
     token: Optional[str]
     userId: Optional[str]
     name: Optional[str]
     email: Optional[str]
     message: Optional[str]
+    authMethod: Optional[str] = "google"  # Can be 'google' or 'email'
 
 
 class CaptureStartRequest(BaseModel):

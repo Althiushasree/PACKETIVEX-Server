@@ -11,6 +11,8 @@ class User(Base):
     email = Column(String(128), unique=True, index=True)
     hashed_password = Column(String(256))
     is_active = Column(Boolean, default=True)
+    auth_method = Column(String(32), default="google")  # 'google' or 'email'
+    created_at = Column(BigInteger, default=lambda: int(__import__('time').time() * 1000))
 
 
 class CaptureSession(Base):
